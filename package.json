@@ -20,8 +20,6 @@
   "author": "SubQuery Team",
   "license": "MIT",
   "dependencies": {
-    "@pangolindex/exchange-contracts": "^1.0.2",
-    "@polkadot/api": "^9",
     "@subql/common": "latest",
     "@subql/validator": "latest",
     "assert": "^2.0.0"
