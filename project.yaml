@@ -41,3 +41,14 @@ dataSources:
             type: Transfer
             action:
               deposit: '50000000000000000000000'
+          #filter:
+          # type: FunctionCall
+          # action:
+          #   methodName: storage_deposit
+          #   deposit: '50000000000000000000000'
+          # txFilter:
+          #   receiver: token.sweat
+          #filter:
+          # type: DeleteAccount
+          # action:
+          #   beneficiaryId: ""
