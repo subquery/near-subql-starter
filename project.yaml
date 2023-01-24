@@ -38,17 +38,19 @@ dataSources:
         - handler: handleAction
           kind: near/ActionHandler
           filter:
-            type: Transfer
-            action:
-              deposit: '50000000000000000000000'
+            type: FunctionCall
+            methodName: storage_deposit
+            receiver: token.sweat
           #filter:
-          # type: FunctionCall
-          # action:
-          #   methodName: storage_deposit
-          #   deposit: '50000000000000000000000'
-          # txFilter:
-          #   receiver: token.sweat
-          #filter:
-          # type: DeleteAccount
-          # action:
+          #   type: DeleteAccount
           #   beneficiaryId: ""
+          #filter:
+          #   type: AddKey
+          #   publicKey: ""
+          #   accessKey: ""
+          #filter:
+          #   type: DeleteKey
+          #   publicKey: ""
+          #filter:
+          #   type: Stake
+          #   publicKey: ""
