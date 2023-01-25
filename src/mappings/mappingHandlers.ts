@@ -1,5 +1,3 @@
-// Copyright 2020-2022 OnFinality Limited authors & contributors
-// SPDX-License-Identifier: Apache-2.0
 import { NearActionEntity, NearBlockEntity, NearTxEntity } from "../types";
 import {
   NearTransaction,
@@ -10,6 +8,7 @@ import {
 
 export async function handleBlock(block: NearBlock): Promise<void> {
   logger.info(`Handling block ${block.header.height}`);
+
   const blockRecord = NearBlockEntity.create({
     id: block.header.height.toString(),
     hash: block.header.hash,
@@ -23,6 +22,8 @@ export async function handleBlock(block: NearBlock): Promise<void> {
 export async function handleTransaction(
   transaction: NearTransaction
 ): Promise<void> {
+  logger.info(`Handling transaction at ${transaction.block_height}`);
+
   const transactionRecord = NearTxEntity.create({
     id: `${transaction.block_hash}-${transaction.result.id}`,
     signer: transaction.signer_id,
@@ -32,8 +33,10 @@ export async function handleTransaction(
   await transactionRecord.save();
 }
 
-export async function handleAction(action: NearAction): Promise<void> {
-  action = action as NearAction<Transfer>;
+export async function handleAction(
+  action: NearAction<Transfer>
+): Promise<void> {
+  logger.info(`Handling action at ${action.transaction.block_height}`);
 
   const actionRecord = NearActionEntity.create({
     id: `${action.transaction.result.id}-${action.id}`,

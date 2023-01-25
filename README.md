@@ -1,7 +1,9 @@
 # SubQuery - Starter Package
 
 The Starter Package is an example that you can use as a starting point for developing your SubQuery project.
-A SubQuery package defines which data The SubQuery will index from the Substrate blockchain, and how it will store it.
+A SubQuery Project defines which data The SubQuery will index from the Substrate blockchain, and how it will store it.
+
+This is a specific starter project for NEAR. It indexes all transactions of the token.sweat contract token from sweat_welcome.near (whick rewards users for physically moving around). It also indexes all storage_deposit calls for the same contract.
 
 ## Preparation
 
@@ -89,14 +91,17 @@ Finally, you should see a GraphQL playground is showing in the explorer and the 
 For the `subql-starter` project, you can try to query with the following code to get a taste of how it works.
 
 ```graphql
-{
-  query {
-    starterEntities(first: 10) {
-      nodes {
-        field1
-        field2
-        field3
-      }
+query {
+  nearTxEntities(first: 50) {
+    totalCount
+    nodes {
+      id
+    }
+  }
+  nearActionEntities(first: 50) {
+    totalCount
+    nodes {
+      id
     }
   }
 }
