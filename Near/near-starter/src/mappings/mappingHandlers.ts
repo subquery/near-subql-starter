@@ -36,15 +36,26 @@ export async function handleTransaction(
 export async function handleAction(
   action: NearAction<Transfer>
 ): Promise<void> {
-  // action can belong to either a transaction or a receipt
-  // to check which one, we can check if action.transaction is null
-  // if it is null, then it belongs to a receipt
-  // otherwise, it belongs to a transaction
-  logger.info(`Handling action at ${action.transaction ? action.transaction.block_height : action.receipt.block_height}`);
+  // An Action can belong to either a transaction or a receipt
+  // To check which one, we can check if action.transaction is null
+  // If it is null, then it belongs to a receipt
+  logger.info(
+    `Handling action at ${
+      action.transaction
+        ? action.transaction.block_height
+        : action.receipt.block_height
+    }`
+  );
 
-  const id = action.transaction ? `${action.transaction.block_height}-${action.transaction.result.id}-${action.id}` : `${action.receipt.block_height}-${action.receipt.id}-${action.id}`;
-  const sender = action.transaction ? action.transaction.signer_id : action.receipt.predecessor_id;
-  const receiver = action.transaction ? action.transaction.receiver_id : action.receipt.receiver_id;
+  const id = action.transaction
+    ? `${action.transaction.block_height}-${action.transaction.result.id}-${action.id}`
+    : `${action.receipt.block_height}-${action.receipt.id}-${action.id}`;
+  const sender = action.transaction
+    ? action.transaction.signer_id
+    : action.receipt.predecessor_id;
+  const receiver = action.transaction
+    ? action.transaction.receiver_id
+    : action.receipt.receiver_id;
 
   const actionRecord = NearActionEntity.create({
     id: id,
