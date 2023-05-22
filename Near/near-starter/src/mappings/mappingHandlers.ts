@@ -5,6 +5,7 @@ import {
   NearAction,
   Transfer,
 } from "@subql/types-near";
+import assert from "assert";
 
 export async function handleBlock(block: NearBlock): Promise<void> {
   logger.info(`Handling block ${block.header.height}`);
@@ -39,6 +40,8 @@ export async function handleAction(
   // An Action can belong to either a transaction or a receipt
   // To check which one, we can check if action.transaction is null
   // If it is null, then it belongs to a receipt
+  assert(action.receipt, "Missing action.receipt")
+
   logger.info(
     `Handling action at ${
       action.transaction
