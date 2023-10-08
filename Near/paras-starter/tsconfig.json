@@ -12,7 +12,7 @@
     "target": "es2017"
   },
   "include": [
-    "src/**/*", 
+    "src/**/*",
     "node_modules/@subql/types-near/dist/global.d.ts",
     "node_modules/@subql/types-core/dist/global.d.ts"
   ]

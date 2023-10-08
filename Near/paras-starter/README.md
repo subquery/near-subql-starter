@@ -34,7 +34,7 @@ Replace `project-name` with your project name and run the command:
 subql init --starter project-name
 ```
 
-This creates a simple working example project to start the creation of your own project. 
+This creates a simple working example project to start the creation of your own project.
 
 Next, under the project directory, run following command to install all the dependency.
 
@@ -111,7 +111,7 @@ query {
 
 The query above returns the first 5 transaction ids along with the first 5 action ids. Note: In NEAR, a [Transaction](https://docs.near.org/concepts/basics/transactions/overview#transaction)) is a collection of Actions that describe what should be done at the destination (the receiver account).
 
-An [Action](https://docs.near.org/concepts/basics/transactions/overview#action) is a composable unit of operation that, together with zero or more other Actions, defines a sensible Transaction. 
+An [Action](https://docs.near.org/concepts/basics/transactions/overview#action) is a composable unit of operation that, together with zero or more other Actions, defines a sensible Transaction.
 
 The expected output:
 

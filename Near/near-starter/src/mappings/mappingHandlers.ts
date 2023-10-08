@@ -40,7 +40,7 @@ export async function handleAction(
   // An Action can belong to either a transaction or a receipt
   // To check which one, we can check if action.transaction is null
   // If it is null, then it belongs to a receipt
-  assert(action.receipt, "Missing action.receipt")
+  assert(action.receipt, "Missing action.receipt");
 
   logger.info(
     `Handling action at ${
