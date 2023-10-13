@@ -29,10 +29,12 @@ const project: EthereumProject = {
     // chainId is the EVM Chain ID, for Near Aurora this is 1313161554
     // https://chainlist.org/chain/1313161554
     chainId: "1313161554",
-    // This endpoint must be a public non-pruned archive node
-    // We recommend providing more than one endpoint for improved reliability, performance, and uptime
-    // Public nodes may be rate limited, which can affect indexing speed
-    // When developing your project we suggest getting a private API key from a commercial provider
+    /**
+     * These endpoint(s) should be public non-pruned archive node
+     * We recommend providing more than one endpoint for improved reliability, performance, and uptime
+     * Public nodes may be rate limited, which can affect indexing speed
+     * When developing your project we suggest getting a private API key
+     */
     endpoint: ["https://mainnet.aurora.dev"],
     // Recommended to provide the HTTP endpoint of a full chain dictionary to speed up processing
     // dictionary: We don't have one for NEAR Aurora
