@@ -2,7 +2,7 @@
 
 [SubQuery](https://subquery.network) is a fast, flexible, and reliable open-source data indexer that provides you with custom APIs for your web3 project across all of our supported networks. To learn about how to get started with SubQuery, [visit our docs](https://academy.subquery.network).
 
-**This SubQuery project indexes all transactions of the `token.sweat` contract token from `sweat_welcome.near` (which rewards users for physically moving around). It also indexes all storage_deposit calls for the same contract on the NEAR mainnet.**
+**This SubQuery project indexes the `swap` actions of the `v2.ref-finance.near` contract on the NEAR mainnet.**
 
 ## Start
 
@@ -41,21 +41,18 @@ For this project, you can try to query with the following GraphQL code to get a 
 ```graphql
 {
   query {
-    nearTxEntities(first: 50) {
-      totalCount
+    swaps {
       nodes {
         id
-        signer
-        receiver
-      }
-    }
-    nearActionEntities(first: 50, orderBy: AMOUNT_DESC) {
-      totalCount
-      nodes {
-        id
-        sender
-        receiver
-        amount
+        firstToken {
+          id
+        }
+        secondToken {
+          id
+        }
+        pool {
+          id
+        }
       }
     }
   }
