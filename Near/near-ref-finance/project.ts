@@ -25,8 +25,6 @@ const project: NearProject = {
     file: "./schema.graphql",
   },
   network: {
-    // chainId is the EVM Chain ID, for Near Aurora this is 1313161554
-    // https://chainlist.org/chain/1313161554
     chainId: "mainnet",
     /**
      * These endpoint(s) should be public non-pruned archive node
