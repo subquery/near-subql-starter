@@ -2,6 +2,7 @@ import { Swap, Token, Pool } from "../types";
 import { NearAction } from "@subql/types-near";
 
 export async function handleAction(action: NearAction): Promise<void> {
+  logger.info(`Swap found at block ${action.transaction.block_height}`);
   // An Action can belong to either a transaction or a receipt
   // To check which one, we can check if action.transaction is null
   // If it is null, then it belongs to a receipt
@@ -21,7 +22,7 @@ export async function handleAction(action: NearAction): Promise<void> {
         await getOrCreatePool(JSON.stringify(actions[i]["token_out"]))
       ).id,
     }).save();
-    logger.warn("Swap is saved");
+    logger.info("Swap is saved");
   }
 }
 
