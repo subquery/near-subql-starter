@@ -1,0 +1,14 @@
+type Swap @entity {
+  id: ID!
+  pool: Pool!
+  firstToken: Token!
+  secondToken: Token!
+}
+
+type Token @entity {
+  id: ID!
+}
+
+type Pool @entity {
+  id: ID!
+}
