@@ -16,17 +16,17 @@ export async function handleAction(action: NearAction): Promise<void> {
       id: `${action.transaction.block_height}-${action.transaction.result.id}-${action.id}-${i}`,
       poolId: (await getOrCreatePool(JSON.stringify(actions[i]["pool_id"]))).id,
       firstTokenId: (
-        await getOrCreatePool(JSON.stringify(actions[i]["token_in"]))
+        await getOrCreateToken(JSON.stringify(actions[i]["token_in"]))
       ).id,
       secondTokenId: (
-        await getOrCreatePool(JSON.stringify(actions[i]["token_out"]))
+        await getOrCreateToken(JSON.stringify(actions[i]["token_out"]))
       ).id,
     }).save();
     logger.info("Swap is saved");
   }
 }
 
-export async function getOrCreateToken(tokenid: string): Promise<Token> {
+async function getOrCreateToken(tokenid: string): Promise<Token> {
   let token = await Token.get(tokenid);
   if (token === undefined) {
     token = Token.create({ id: tokenid });
@@ -35,7 +35,7 @@ export async function getOrCreateToken(tokenid: string): Promise<Token> {
   return token;
 }
 
-export async function getOrCreatePool(poolid: string): Promise<Pool> {
+async function getOrCreatePool(poolid: string): Promise<Pool> {
   let pool = await Token.get(poolid);
   if (pool === undefined) {
     pool = Token.create({ id: poolid });
