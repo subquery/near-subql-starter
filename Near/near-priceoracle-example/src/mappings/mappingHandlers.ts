@@ -37,17 +37,19 @@ export async function handleNewPrice(action: NearAction): Promise<void> {
       action.transaction.signer_id,
       action.transaction
     );
-    await Promise.all(payload.prices.map(async (p, index) => {
-      await Price.create({
-        id: `${action.transaction.result.id}-${action.id}-${index}`,
-        oracleId: action.transaction.signer_id.toLowerCase(),
-        assetID: p.asset_id,
-        price: parseInt(p.price.multiplier),
-        decimals: p.price.decimals,
-        blockHeight: BigInt(action.transaction.block_height),
-        timestamp: BigInt(action.transaction.timestamp),
-      }).save();
-    }));
+    await Promise.all(
+      payload.prices.map(async (p, index) => {
+        await Price.create({
+          id: `${action.transaction.result.id}-${action.id}-${index}`,
+          oracleId: action.transaction.signer_id.toLowerCase(),
+          assetID: p.asset_id,
+          price: parseInt(p.price.multiplier),
+          decimals: p.price.decimals,
+          blockHeight: BigInt(action.transaction.block_height),
+          timestamp: BigInt(action.transaction.timestamp),
+        }).save();
+      })
+    );
   }
 }
 
