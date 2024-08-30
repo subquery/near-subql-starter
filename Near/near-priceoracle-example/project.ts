@@ -43,7 +43,7 @@ const project: NearProject = {
   dataSources: [
     {
       kind: NearDatasourceKind.Runtime, // We use ethereum runtime since NEAR Aurora is a layer-2 that is compatible
-      startBlock: 50838152, // You can set any start block you want here. This block was when app.nearcrowd.near was created https://nearblocks.io/txns/6rq4BNMpr8RwxKjfGYbruHhrL1ETbNzeFwcppGwZoQBY
+      startBlock: 50838340, // You can set any start block you want here. This block was when app.nearcrowd.near was created https://nearblocks.io/txns/6rq4BNMpr8RwxKjfGYbruHhrL1ETbNzeFwcppGwZoQBY
       mapping: {
         file: "./dist/index.js",
         handlers: [
