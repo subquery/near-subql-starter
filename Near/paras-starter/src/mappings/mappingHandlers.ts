@@ -21,7 +21,7 @@ import { FunctionCall } from "@subql/types-near";
 }
  */
 export async function handleTransaction(
-  transaction: NearTransaction
+  transaction: NearTransaction,
 ): Promise<void> {
   logger.info(`Handling transaction at ${transaction.block_height}`);
   logger.info(`IN TRANSACTION FUNCTION`);
@@ -37,7 +37,7 @@ export async function handleTransaction(
 }
 
 export async function handleAction(
-  action: NearAction<FunctionCall>
+  action: NearAction<FunctionCall>,
 ): Promise<void> {
   logger.info(`Handling action at ${action.transaction.block_height}`);
 
@@ -48,7 +48,7 @@ export async function handleAction(
       .toJson()
       .receiver_id.toString(),
     amount: BigInt(
-      (action.action as FunctionCall).args.toJson().amount.toString()
+      (action.action as FunctionCall).args.toJson().amount.toString(),
     ),
     msg: (action.action as FunctionCall).args.toJson().msg.toString(),
   });

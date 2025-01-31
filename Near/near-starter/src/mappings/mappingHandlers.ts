@@ -21,7 +21,7 @@ export async function handleBlock(block: NearBlock): Promise<void> {
 }
 
 export async function handleTransaction(
-  transaction: NearTransaction
+  transaction: NearTransaction,
 ): Promise<void> {
   logger.info(`Handling transaction at ${transaction.block_height}`);
 
@@ -35,13 +35,13 @@ export async function handleTransaction(
 }
 
 export async function handleAction(
-  action: NearAction<Transfer>
+  action: NearAction<Transfer>,
 ): Promise<void> {
   // An Action can belong to either a transaction or a receipt
   // To check which one, we can check if action.transaction is null
   // If it is null, then it belongs to a receipt
-  if(!action.receipt){
-    return
+  if (!action.receipt) {
+    return;
   }
 
   logger.info(
@@ -49,7 +49,7 @@ export async function handleAction(
       action.transaction
         ? action.transaction.block_height
         : action.receipt.block_height
-    }`
+    }`,
   );
 
   const id = action.transaction
