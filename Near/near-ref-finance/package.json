@@ -21,12 +21,11 @@
   "author": "SubQuery Team",
   "license": "MIT",
   "dependencies": {
-    "@subql/common": "latest",
-    "@subql/types-near": "latest",
-    "assert": "^2.0.0"
+    "@subql/types-near": "latest"
   },
   "devDependencies": {
     "@subql/cli": "latest",
+    "@subql/common-near": "latest",
     "typescript": "latest"
   }
 }

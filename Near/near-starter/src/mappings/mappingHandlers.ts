@@ -5,7 +5,6 @@ import {
   NearAction,
   Transfer,
 } from "@subql/types-near";
-import assert from "assert";
 
 export async function handleBlock(block: NearBlock): Promise<void> {
   logger.info(`Handling block ${block.header.height}`);
@@ -66,7 +65,7 @@ export async function handleAction(
     id: id,
     sender: sender,
     receiver: receiver,
-    amount: BigInt((action.action as Transfer).deposit.toString()),
+    amount: action.action.deposit,
   });
 
   await actionRecord.save();

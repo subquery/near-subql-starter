@@ -1,10 +1,5 @@
 import { NearActionEntity, NearBlockEntity, NearTxEntity } from "../types";
-import {
-  NearTransaction,
-  NearBlock,
-  NearAction,
-  Transfer,
-} from "@subql/types-near";
+import { NearTransaction, NearBlock, NearAction } from "@subql/types-near";
 import { FunctionCall } from "@subql/types-near";
 
 /* export async function handleBlock(block: NearBlock): Promise<void> {
@@ -47,10 +42,8 @@ export async function handleAction(
     receiver: (action.action as FunctionCall).args
       .toJson()
       .receiver_id.toString(),
-    amount: BigInt(
-      (action.action as FunctionCall).args.toJson().amount.toString(),
-    ),
-    msg: (action.action as FunctionCall).args.toJson().msg.toString(),
+    amount: action.action.args.toJson().amount,
+    msg: action.action.args.toJson().msg.toString(),
   });
 
   await actionRecord.save();
