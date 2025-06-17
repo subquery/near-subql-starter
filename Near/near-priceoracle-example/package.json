@@ -11,14 +11,14 @@
     "prepack": "rm -rf dist && npm run build",
     "test": "jest"
   },
-  "homepage": "https://github.com/jamesbayly/near_priceoracle_example",
-  "repository": "github:jamesbayly/near_priceoracle_example",
+  "homepage": "https://github.com/subquery/near-subql-starter",
+  "repository": "github:subquery/near-subql-starter",
   "files": [
     "dist",
     "schema.graphql",
     "project.yaml"
   ],
-  "author": "James Bayly",
+  "author": "SubQuery Pte Ltd.",
   "license": "MIT",
   "dependencies": {
     "@subql/types-near": "latest"
